@@ -78,6 +78,8 @@ fn collect_possible_paths() -> Result<Vec<PathBuf>, Error> {
         cargo_path.pop();
         cargo_path.pop();
 
+        paths.push(cargo_path.join("codegen-backends"));
+
         if let Some(toolchain) = cargo_path.file_name() {
             let arch = extract_arch(toolchain.to_str().unwrap());
 
