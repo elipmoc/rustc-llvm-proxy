@@ -82,7 +82,8 @@ fn collect_possible_paths() -> Result<Vec<PathBuf>, Error> {
 
         if let Some(toolchain) = cargo_path.file_name() {
             let arch = extract_arch(toolchain.to_str().unwrap());
-
+            println!("[{}]", toolchain.to_str().unwrap());
+            println!("[{}]", arch);
             paths.push(
                 cargo_path
                     .join("lib")
