@@ -62,6 +62,7 @@ fn collect_possible_paths() -> Result<Vec<PathBuf>, Error> {
             if let Some(possible_toolchain) = possible_path.file_name() {
                 let possible_arch = extract_arch(possible_toolchain.to_str().unwrap());
 
+                paths.push(possible_path.join("codegen-backends"));
                 paths.push(
                     possible_path
                         .join("lib")
@@ -77,8 +78,6 @@ fn collect_possible_paths() -> Result<Vec<PathBuf>, Error> {
         let mut cargo_path = PathBuf::from(cargo);
         cargo_path.pop();
         cargo_path.pop();
-
-        paths.push(cargo_path.join("codegen-backends"));
 
         if let Some(toolchain) = cargo_path.file_name() {
             let arch = extract_arch(toolchain.to_str().unwrap());
